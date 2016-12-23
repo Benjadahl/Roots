@@ -18,6 +18,13 @@ chrome.tabs.query(
                 var a = document.createElement("a");                            //Create a link element that will be inserted into the list
                 a.appendChild(document.createTextNode(currentLink));            //Insert the link text into the link element
                 a.href = currentLink;                                           //Add the link attribute to the link element
+
+                //Add the eventlistener that changes the current tab
+                //Since normal links does not work in pop ups
+                a.addEventListener('click', function(){
+                    chrome.tabs.update(tabID, {url: currentLink});
+                }, false);
+
                 var li = document.createElement("li");                          //Create the list item element
                 li.appendChild(a);                                              //Insert the link element into the list item element
                 mainList.appendChild(li);                                       //Insert the list item element into the main list element
