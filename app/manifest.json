@@ -9,6 +9,9 @@
     "default_icon": "resources/icon.png",
     "default_popup": "popup/popup.html"
   },
+  "icons":{
+    "128":"resources/icon.png"  
+  },
   "content_scripts": [
     {
       "matches":["*://*/*"],
