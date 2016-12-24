@@ -7,6 +7,7 @@ chrome.runtime.onMessage.addListener(
         if(typeof request.links !== "undefined"){
             console.log("Saving links for tab " + sender.tab.id);
             linksPerTab[sender.tab.id] = request.links;
+
             console.log(linksPerTab);
         }
         if(typeof request.tabID !== "undefined"){
