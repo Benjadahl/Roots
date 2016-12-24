@@ -3,7 +3,7 @@ var links = [];
 
 for (i = 0; i < linkNodes.length; i++){
     const link = linkNodes[i].href;
-    if(link !== "javascript:void(0)"){
+    if(!link.includes("javascript:")){
         links.push(linkNodes[i].href);
     }
 }
