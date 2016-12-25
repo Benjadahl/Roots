@@ -10,7 +10,7 @@
     "default_popup": "popup/popup.html"
   },
   "icons":{
-    "128":"resources/icon.png"  
+    "128":"resources/icon.png"
   },
   "content_scripts": [
     {
@@ -23,6 +23,7 @@
     "persistent": false
   },
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "tabs"
   ]
 }
