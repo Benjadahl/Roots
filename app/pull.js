@@ -1,27 +1,36 @@
 var linkNodes = document.links;
 var links = [];
-var slashList = [];
+var valueList = [];
+
+//Configurations
+const slashWeight = 5;
 
 for (i = 0; i < linkNodes.length; i++){
     const link = linkNodes[i].href;
     if(!link.includes("javascript:")){
-        const slashes = (link.match(/\//g) || []).length;
+        const linkLength = link.length;
+        //A score for the relevance of the link, lower is better
+        var relevanceScore = link.length;
 
-        if(typeof slashList[slashes] !== "object"){
-            slashList[slashes] = [];
+        //The amount of slashes in the link should add to the relevanceScore
+        const slashes = (link.match(/\//g) || []).length;
+        relevanceScore += slashes * slashWeight;
+
+        if(typeof valueList[linkLength] !== "object"){
+            valueList[linkLength] = [];
         }
 
-        if(slashList[slashes].indexOf(link) === -1){
-            slashList[slashes].push(link);
+        if(valueList[linkLength].indexOf(link) === -1){
+            valueList[linkLength].push(link);
         }
     }
 }
 
-for (i = 0; i < slashList.length; i++){
-    const slashCategory = slashList[i];
-    if(typeof slashCategory !== "undefined"){
-        for (t = 0; t < slashCategory.length; t++){
-            links.push(slashCategory[t]);
+for (i = 0; i < valueList.length; i++){
+    const valueCategory = valueList[i];
+    if(typeof valueCategory !== "undefined"){
+        for (t = 0; t < valueCategory.length; t++){
+            links.push(valueCategory[t]);
         }
     }
 }
