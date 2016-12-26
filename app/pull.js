@@ -6,9 +6,10 @@ console.log(domain);
 
 //Configurations
 const slashWeight = 5;
+const sameDomainWeight = 10;
 const bannedKeywords = [
     //Technical bans
-    "javascript:","#",
+    "javascript:","#", "?",
     //Banned sites
     "goo.gl","bit.ly","adf.ly","youtube.com","imgur"
 ];
@@ -32,12 +33,19 @@ for (i = 0; i < linkNodes.length; i++){
         const slashes = (link.match(/\//g) || []).length;
         relevanceScore += slashes * slashWeight;
 
-        if(typeof valueList[linkLength] !== "object"){
-            valueList[linkLength] = [];
+        //Check if the link is not from the same domain
+        if(!link.includes(domain)){
+            relevanceScore += sameDomainWeight + domain.length;
         }
 
-        if(valueList[linkLength].indexOf(link) === -1){
-            valueList[linkLength].push(link);
+        console.log(link + " relevanceScore " + relevanceScore);
+
+        if(typeof valueList[relevanceScore] !== "object"){
+            valueList[relevanceScore] = [];
+        }
+
+        if(valueList[relevanceScore].indexOf(link) === -1){
+            valueList[relevanceScore].push(link);
         }
     }
 }
