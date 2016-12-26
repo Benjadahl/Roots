@@ -29,5 +29,5 @@ chrome.tabs.onReplaced.addListener(function(addedTabId, removedTabId) {
 
 chrome.tabs.onRemoved.addListener(function(tabId, removeInfo) {
     delete linksPerTab[tabId];
-    console.log(linksPerTab);
+    console.log("Deleting tab " + tabId);
 });

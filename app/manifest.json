@@ -15,12 +15,12 @@
   "content_scripts": [
     {
       "matches":["*://*/*"],
-      "js":["pull.js"]
+      "js":["resources/domain.js","pull.js"]
     }
   ],
   "background": {
     "scripts":["background.js"],
-    "persistent": false
+    "persistent": true
   },
   "permissions": [
     "activeTab",

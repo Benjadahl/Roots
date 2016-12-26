@@ -1,6 +1,8 @@
 var linkNodes = document.links;
 var links = [];
 var valueList = [];
+const domain = getDomain(window.location.href, true);
+console.log(domain);
 
 //Configurations
 const slashWeight = 5;
