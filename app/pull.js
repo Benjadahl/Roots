@@ -6,10 +6,24 @@ console.log(domain);
 
 //Configurations
 const slashWeight = 5;
+const bannedKeywords = [
+    //Technical bans
+    "javascript:","#",
+    //Banned sites
+    "goo.gl","bit.ly","adf.ly","youtube.com","imgur"
+];
 
 for (i = 0; i < linkNodes.length; i++){
     const link = linkNodes[i].href;
-    if(!link.includes("javascript:")){
+    var containsBanned = false;
+
+    for(t = 0; t < bannedKeywords.length; t++){
+        if(link.includes(bannedKeywords[t])){
+            containsBanned = true;
+        }
+    }
+
+    if(containsBanned === false){
         const linkLength = link.length;
         //A score for the relevance of the link, lower is better
         var relevanceScore = link.length;
