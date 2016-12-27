@@ -13,7 +13,7 @@ function getDomain (URL, includeProtocol = false) {
     for (var c in URL){
         if(domainMode && URL[c] === "/"){
             domainMode = false;
-            break;
+            return domain;
         }
         if(domainMode){
             domain = domain + URL[c];

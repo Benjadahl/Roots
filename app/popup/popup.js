@@ -1,9 +1,9 @@
 const mainList = document.getElementById("mainList");
 var tabID = undefined;
 
-function addLinkToList(link){
+function addLinkToList(link, symbolicLink){
     var a = document.createElement("a");                                        //Create a link element that will be inserted into the list
-    a.appendChild(document.createTextNode(link));                               //Insert the link text into the link element
+    a.appendChild(document.createTextNode(symbolicLink));                       //Insert the link text into the link element
     a.href = link;                                                              //Add the link attribute to the link element
 
     //Add the eventlistener that changes the current tab
@@ -32,7 +32,7 @@ chrome.tabs.query(
             //Loop over the entire links array
             for(i = 0; i < links.length; i++){
                 const currentLink = links[i];                                   //Create a reference to the current link
-                addLinkToList(currentLink);
+                addLinkToList(currentLink.link, currentLink.symbolicLink);
             }
         });
     }
