@@ -5,7 +5,7 @@ const domain = getDomain(window.location.href);
 
 //Configurations
 const slashWeight = 5;
-const sameDomainWeight = 10;
+const sameDomainWeight = 30;
 const bannedKeywords = [
     //Technical bans
     "javascript:","#", "?",

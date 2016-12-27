@@ -37,3 +37,9 @@ chrome.tabs.query(
         });
     }
 );
+
+const settingsButton = document.getElementById("settings");
+
+settingsButton.addEventListener("click", function(){
+    chrome.runtime.openOptionsPage();
+});

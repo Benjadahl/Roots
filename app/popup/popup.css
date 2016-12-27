@@ -2,3 +2,19 @@ body {
     overflow: scroll;
     width: 300px;
 }
+#title{
+    font-family: Verdana, Geneva, sans-serif;
+    -webkit-user-select: none;
+}
+#settings {
+    position: relative;
+    margin-top: -36px;
+    float: right;
+
+    /*These values are in place to make the image non dragable*/
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+}
+#settings:hover {
+    opacity: 0.5
+}
