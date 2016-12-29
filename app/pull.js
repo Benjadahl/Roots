@@ -27,7 +27,6 @@ chrome.storage.sync.get("bannedKeywords", function(data){
             }
         }
 
-        console.log(link.includes(""));
         //This will only be run if it did not contain any banned keywords
         if(!containsBanned){
             //Remove protocol from symbolicLink
