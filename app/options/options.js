@@ -1,12 +1,41 @@
+function arrayToString(input){
+    var output = JSON.stringify(input);
+    output = output.substring(1, output.length);
+    output = output.substring(0, output.length - 1);
+    output = output.replace(/"/g,'');
+    return output;
+}
+
 const bannedKeywordsElement = document.getElementById("bannedKeywords");
 
 chrome.storage.sync.get("bannedKeywords", function(data){
-    bannedKeywordsElement.value = JSON.stringify(data.bannedKeywords);
+    bannedKeywordsElement.value = arrayToString(data.bannedKeywords);
 });
 
 const saveButtonElement = document.getElementById("saveButton");
+const errorText = document.getElementById("error");
 
 saveButtonElement.addEventListener("click", function(){
-    const newValue = JSON.parse(bannedKeywordsElement.value);
-    chrome.storage.sync.set({"bannedKeywords": newValue});
+    const valueString = bannedKeywordsElement.value;
+    if (!valueString.includes('"')){
+        const newValue = valueString.split(",");
+        chrome.storage.sync.set({"bannedKeywords": newValue});
+        errorText.innerHTML = "."
+        errorText.style.visibility = "hidden";
+    } else {
+        errorText.innerHTML = "You cannot use quotes in your banned keywords"
+        errorText.style.visibility = "visible";
+    }
+});
+
+const defaultButtonElement = document.getElementById("defaultButton");
+
+defaultButtonElement.addEventListener("click", function(){
+    const bannedKeywords = [
+        //Technical bans
+        "javascript:","#", "?",
+        //Banned sites
+        "goo.gl","bit.ly","adf.ly","youtube.com","imgur"
+    ];
+    bannedKeywordsElement.value = arrayToString(bannedKeywords);
 });
