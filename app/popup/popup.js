@@ -1,3 +1,4 @@
+//The list to append all of the links to
 const mainList = document.getElementById("mainList");
 var tabID = undefined;
 
@@ -38,6 +39,7 @@ chrome.tabs.query(
     }
 );
 
+//Open the options page when the button is clicked
 const settingsButton = document.getElementById("settings");
 
 settingsButton.addEventListener("click", function(){
