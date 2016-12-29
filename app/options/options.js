@@ -18,7 +18,10 @@ const errorText = document.getElementById("error");
 saveButtonElement.addEventListener("click", function(){
     const valueString = bannedKeywordsElement.value;
     if (!valueString.includes('"')){
-        const newValue = valueString.split(",");
+        var newValue = valueString.split(",");
+        if(newValue[0] === ""){
+            newValue = [];
+        }
         chrome.storage.sync.set({"bannedKeywords": newValue});
         errorText.innerHTML = "."
         errorText.style.visibility = "hidden";
