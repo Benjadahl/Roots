@@ -31,3 +31,16 @@ chrome.tabs.onRemoved.addListener(function(tabId, removeInfo) {
     delete linksPerTab[tabId];
     console.log("Deleting tab " + tabId);
 });
+
+chrome.runtime.onInstalled.addListener(function(details){
+    if(details.reason == "install"){
+        console.log("Settings default values");
+        const bannedKeywords = [
+            //Technical bans
+            "javascript:","#", "?",
+            //Banned sites
+            "goo.gl","bit.ly","adf.ly","youtube.com","imgur"
+        ];
+        chrome.storage.sync.set({"bannedKeywords": bannedKeywords});
+    }
+});

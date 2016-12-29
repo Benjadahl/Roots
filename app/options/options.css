@@ -1,0 +1,20 @@
+#title{
+    display: inline;
+}
+#defaultButton {
+    display: inline;
+    float: right;
+}
+#headerSeperator{
+    margin-top: 10px;
+}
+.textSetting {
+    width: 100%;
+}
+#saveButton {
+    margin-top: 10px;
+    float: right;
+}
+#spacer {
+    visibility: hidden;
+}
