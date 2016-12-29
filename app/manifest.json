@@ -3,7 +3,7 @@
 
   "name": "Roots",
   "description": "A Chrome extension that shows a tree view of the website structure",
-  "version": "0.1",
+  "version": "1.0.0",
 
   "options_ui": {
       "page": "options/options.html",
