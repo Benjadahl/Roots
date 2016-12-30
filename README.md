@@ -1,3 +1,3 @@
 ![Roots logo](/marketing/logo.png)
 ---
-A Chrome extension that shows a tree view of the website structure
+Show a view of the links of page - sorted by relevance
